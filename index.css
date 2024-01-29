@@ -23,6 +23,28 @@ body {
     transition: all 0.5s ease-out;
 }
 
+.modal {
+    font-family: 'Inter';
+    color: seagreen;
+    position: absolute;
+    top: 20%;
+    font-size: 24px;
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     cursor: pointer;
+}
+
+.cancel, .again {
+    font-family: 'Inter';
+    font-size: 18px;
+    border: none;
+    background-color: seagreen;
+    color: white;
+    border-radius: 5px;
+}
 object {
     width: 300px;
 }

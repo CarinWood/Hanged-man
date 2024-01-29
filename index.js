@@ -34,6 +34,8 @@ let wrongLettersPressed = ''
 let place
 let gameOverText = document.querySelector('.game-over-text')
 let pic = document.querySelector('.pic')
+let count = 0;
+let modal = document.querySelector('.modal')
 
 let startBtn = document.querySelector('.start-btn')
 startBtn.addEventListener('click', function() {
@@ -81,8 +83,17 @@ function startGame() {
             for (let i = 0; i < correctWord.length; i++) {
                 if(correctWord.charAt(i) === keyPressed) {
                     playBoard.children[i].innerText = keyPressed
+                    count += 1;
                 }
-                
+            }
+            if(count === correctWord.length) {
+                ground.style.opacity = '0'
+                head.style.opacity = '0'
+                scaffold.style.opacity = '0'
+                body.style.opacity = '0'
+                legs.style.opacity = '0'
+                arms.style.opacity = '0'
+                modal.classList.add('show')
             }
                  
         } else {
@@ -93,7 +104,7 @@ function startGame() {
                 hang(strike)
                 wrongLettersPressed += keyPressed
             } else {
-                console.log('Tangenten innehåller inte en tillåten bokstav: ' + keyPressed)
+                return
             }
             
         }
