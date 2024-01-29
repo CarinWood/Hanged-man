@@ -31,9 +31,13 @@ let instruction = document.querySelector('.instruction')
 let letterBox = document.querySelector('.used-letters')
 let allowedLetters = 'abcdefghijklmnopqrstuvwxyzåäö'
 let wrongLettersPressed = ''
+let place
+let gameOverText = document.querySelector('.game-over-text')
+let pic = document.querySelector('.pic')
 
 let startBtn = document.querySelector('.start-btn')
 startBtn.addEventListener('click', function() {
+    pic.classList.add('fade-out')
     let num = Math.floor((Math.random() * 7))
     correctWord = wordArray[num]
     setPlayboard()
@@ -43,6 +47,7 @@ function addTiles() {
     for (let i = 0; i < correctWord.length; i++) {
         let tile = document.createElement('p')
         tile.classList.add('tile')
+        tile.classList.add(i)
         playBoard.appendChild(tile)
     }
 }
@@ -60,23 +65,31 @@ function hang(strike) {
         case 5: arms.style.opacity = '1'
         break
         case 6: legs.style.opacity = '1'
+        instruction.classList.add('fade-out')
+        playBoard.classList.add('fade-out')
+        letterBox.classList.add('fade-out')
+        gameOverText.classList.add('show')
         break
-        default: 'Whatever'
+        default: ''
     }
 }
 
 function startGame() {
     document.addEventListener('keydown', function(event) {
-        // Hämta tangenten som trycktes ner
-        var keyPressed = event.key;
+        var keyPressed = event.key
         if(correctWord.includes(keyPressed)) {
-            console.log('bokstaven finns i ordet!')
+            for (let i = 0; i < correctWord.length; i++) {
+                if(correctWord.charAt(i) === keyPressed) {
+                    playBoard.children[i].innerText = keyPressed
+                }
+                
+            }
+                 
         } else {
             if(allowedLetters.includes(keyPressed)) {
                 if(wrongLettersPressed.includes(keyPressed)) return
                 letterBox.innerText += keyPressed
                 strike++
-                console.log(strike)
                 hang(strike)
                 wrongLettersPressed += keyPressed
             } else {
