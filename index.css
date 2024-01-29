@@ -1,3 +1,8 @@
+@font-face {
+    font-family: 'Inter';
+    src: url('./assets/Inter-VariableFont_slnt\,wght.ttf');
+}
+
 body {
     margin: 0;
     padding: 0;
@@ -28,4 +33,51 @@ object {
 
 .start-btn:active {
     transform: translateY(3px);
+}
+
+.hide {
+    visibility: hidden;
+}
+
+
+
+.play-board {
+    width: 500px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.tile {
+    width: 50px;
+    height: 45px;
+    background-color: #f0f0f0;
+    border-bottom: 3px solid black;
+    margin: 0px 4px;
+}
+
+.instruction {
+    color: lightslategray;
+    font-family: 'Inter';
+    font-size: 20px;
+    visibility: hidden;
+}
+
+.used-letters {
+    width: 400px;
+    height: 60px;
+    margin-top: 40px;
+    margin-bottom: -140px;
+    font-family: 'Inter';
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 20px;
+    color: red;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.show {
+    visibility: visible;
 }
