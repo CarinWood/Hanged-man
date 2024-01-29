@@ -30,6 +30,7 @@ let playBoard = document.querySelector('.play-board')
 let instruction = document.querySelector('.instruction')
 let letterBox = document.querySelector('.used-letters')
 let allowedLetters = 'abcdefghijklmnopqrstuvwxyzåäö'
+let wrongLettersPressed = ''
 
 let startBtn = document.querySelector('.start-btn')
 startBtn.addEventListener('click', function() {
@@ -72,10 +73,12 @@ function startGame() {
             console.log('bokstaven finns i ordet!')
         } else {
             if(allowedLetters.includes(keyPressed)) {
+                if(wrongLettersPressed.includes(keyPressed)) return
                 letterBox.innerText += keyPressed
                 strike++
                 console.log(strike)
                 hang(strike)
+                wrongLettersPressed += keyPressed
             } else {
                 console.log('Tangenten innehåller inte en tillåten bokstav: ' + keyPressed)
             }
