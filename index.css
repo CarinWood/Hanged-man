@@ -37,14 +37,31 @@ body {
      cursor: pointer;
 }
 
+.btn-area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .cancel, .again {
     font-family: 'Inter';
     font-size: 18px;
     border: none;
     background-color: seagreen;
     color: white;
+    font-weight: 600;
     border-radius: 5px;
+    margin: 10px;
+    width: 120px;
+    height: 50px;
+    padding: 5px 10px;
+    cursor: pointer;
 }
+
+.cancel:active, .again:active {
+    transform: translateY(3px)
+}
+
 object {
     width: 300px;
 }

@@ -36,6 +36,7 @@ let gameOverText = document.querySelector('.game-over-text')
 let pic = document.querySelector('.pic')
 let count = 0;
 let modal = document.querySelector('.modal')
+let cancel = document.querySelector('.cancel')
 
 let startBtn = document.querySelector('.start-btn')
 startBtn.addEventListener('click', function() {
@@ -114,8 +115,17 @@ function startGame() {
 function setPlayboard() {
     startBtn.classList.add('hide')
     instruction.classList.add('show')
-    console.log(correctWord)
     addTiles()
     startGame()
 }
+
+
+cancel.addEventListener('click', function() {
+    startBtn.classList.remove('hide')
+    instruction.classList.remove('show')
+    pic.classList.remove('fade-out')  
+    playBoard.innerHTML = ''  
+    modal.classList.remove('show')
+    letterBox.innerHTML = ''
+})
 
