@@ -36,7 +36,7 @@ let gameOverText = document.querySelector('.game-over-text')
 let pic = document.querySelector('.pic')
 let count = 0;
 let modal = document.querySelector('.modal')
-let cancel = document.querySelector('.cancel')
+let playAgainBtn = document.querySelector('.again')
 
 let startBtn = document.querySelector('.start-btn')
 startBtn.addEventListener('click', function() {
@@ -132,18 +132,16 @@ function resetGame() {
     body.style.opacity = '0';
     arms.style.opacity = '0';
     legs.style.opacity = '0';
-    pic.classList.remove('fade-out');
-    instruction.classList.remove('fade-out');
-    playBoard.classList.remove('fade-out');
-    letterBox.classList.remove('fade-out');
+    letterBox.innerText = ''
     gameOverText.classList.remove('show');
     modal.classList.remove('show');
-    startBtn.classList.remove('hide')
-    instruction.classList.remove('show')
+    let num = Math.floor((Math.random() * 7))
+    correctWord = wordArray[num]
+    setPlayboard()
 }
 
 
-cancel.addEventListener('click', function() {
+playAgainBtn.addEventListener('click', function() {
     resetGame()
 })
 
