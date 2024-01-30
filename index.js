@@ -119,13 +119,31 @@ function setPlayboard() {
     startGame()
 }
 
-
-cancel.addEventListener('click', function() {
+function resetGame() {
+    correctWord = '';
+    tiles = 0;
+    strike = 0;
+    wrongLettersPressed = '';
+    count = 0;
+    playBoard.innerHTML = '';
+    ground.style.opacity = '0';
+    scaffold.style.opacity = '0';
+    head.style.opacity = '0';
+    body.style.opacity = '0';
+    arms.style.opacity = '0';
+    legs.style.opacity = '0';
+    pic.classList.remove('fade-out');
+    instruction.classList.remove('fade-out');
+    playBoard.classList.remove('fade-out');
+    letterBox.classList.remove('fade-out');
+    gameOverText.classList.remove('show');
+    modal.classList.remove('show');
     startBtn.classList.remove('hide')
     instruction.classList.remove('show')
-    pic.classList.remove('fade-out')  
-    playBoard.innerHTML = ''  
-    modal.classList.remove('show')
-    letterBox.innerHTML = ''
+}
+
+
+cancel.addEventListener('click', function() {
+    resetGame()
 })
 
