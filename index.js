@@ -77,14 +77,18 @@ function hang(strike) {
     }
 }
 
+let isGameOver = false;
+
 function startGame() {
     document.addEventListener('keydown', function(event) {
+        if (isGameOver) return;
         var keyPressed = event.key
         if(correctWord.includes(keyPressed)) {
             for (let i = 0; i < correctWord.length; i++) {
                 if(correctWord.charAt(i) === keyPressed) {
                     playBoard.children[i].innerText = keyPressed
                     count += 1;
+                   
                 }
             }
             if(count === correctWord.length) {
@@ -95,6 +99,7 @@ function startGame() {
                 legs.style.opacity = '0'
                 arms.style.opacity = '0'
                 modal.classList.add('show')
+                isGameOver = true;
             }
                  
         } else {
@@ -133,8 +138,13 @@ function resetGame() {
     arms.style.opacity = '0';
     legs.style.opacity = '0';
     letterBox.innerText = ''
+    
+  
     gameOverText.classList.remove('show');
     modal.classList.remove('show');
+  
+    document.removeEventListener('keydown', startGame());
+    isGameOver = false;
     let num = Math.floor((Math.random() * 7))
     correctWord = wordArray[num]
     setPlayboard()
